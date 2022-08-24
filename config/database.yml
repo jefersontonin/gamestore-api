@@ -1,0 +1,21 @@
+
+# added user, password and host
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  user: postgres
+  password: 12345678
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: gamestore_api_development
+test:
+  <<: *default
+  database: gamestore_api_test
+production:
+  <<: *default
+  database: gamestore_api_production
+  username: gamestore_api
+  password: <%= ENV['GAMESTORE_API_DATABASE_PASSWORD'] %>
